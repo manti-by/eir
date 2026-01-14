@@ -1,37 +1,98 @@
-# FastAPI Project Template
+# EIR - FastAPI Project Template
+
+Modern FastAPI project template with SQLAlchemy, PostgreSQL, and uv for package management.
+
+## Features
+
+- FastAPI with modern Python 3.13+
+- SQLAlchemy 2.0 with async support
+- PostgreSQL database
+- Alembic migrations
+- Docker & Docker Compose deployment
+- pytest testing
+- Ruff linting and formatting
+- Pre-commit hooks
 
 ## Requirements
 
-* [Docker](https://www.docker.com/).
+- Python 3.13+
+- [uv](https://github.com/astral-sh/uv) for package management
+- Docker (for containerized deployment)
 
-## Local Development
+## Quick Start
 
-* Start the stack with Docker Compose:
+### Install Dependencies
+
+```bash
+uv sync
+```
+
+### Development Server
+
+```bash
+uv run python -m eir.main
+# or
+uv run python -m uvicorn eir.main:app --reload
+```
+
+Access at http://localhost:8000
+
+API Documentation:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+### Docker Development
 
 ```bash
 docker compose up -d
 ```
 
-* Now you can open your browser and interact with these URLs:
-
-* Backend, JSON based web API based on OpenAPI: http://localhost/api/
-
-Automatic interactive documentation with Swagger UI (from the OpenAPI backend): http://localhost/docs
-
-**Note**: The first time you start your stack, it might take a minute for it to be ready. While the backend waits for 
-the database to be ready and configures everything. You can check the logs to monitor it.
-
-To check the logs, run:
+### Testing
 
 ```bash
-docker compose logs
+# Run all tests
+uv run pytest --create-db eir/
+
+# Run with coverage
+uv run pytest --cov=eir --cov-report=term-missing eir/
 ```
 
-To check the logs of a specific service, add the name of the service, e.g.:
+### Code Quality
 
 ```bash
-docker compose logs fastapi
+# Run pre-commit hooks
+uv run pre-commit run
+
+# Lint
+uv run ruff check .
+
+# Format
+uv run ruff format .
 ```
 
-If your Docker is not running in `localhost` (the URLs above wouldn't work) you would need to use the IP or domain 
-where your Docker is running.
+### Security Analysis
+
+```bash
+uv run bandit -c pyproject.toml .
+```
+
+## Project Structure
+
+```
+eir/
+├── alembic/           # Database migrations
+├── app/
+│   ├── api/           # API routes
+│   ├── core/          # Core application components
+│   ├── users/         # User module
+│   ├── utils/         # Utility functions
+│   └── main.py        # Application entry point
+├── tests/             # Test suite
+├── pyproject.toml     # Project configuration
+├── docker-compose.yml # Docker Compose configuration
+└── Dockerfile         # Docker image definition
+```
+
+## License
+
+BSD 3-Clause "New" or "Revised"
