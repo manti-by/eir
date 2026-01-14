@@ -9,6 +9,7 @@ __pycache__/
 .idea/
 .vscode/
 .pytest_cache/
+.ruff_cache/
 
 data/
 static/

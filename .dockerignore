@@ -1,12 +1,23 @@
 .git/
+.idea/
+.vscode/
+.venv/
 .pytest_cache/
+.ruff_cache/
 
 __pycache__/
 *.py[cod]
 *$py.class
 
-.flake8
+logs/
+static/
+media/
+
 .gitignore
 .pre-commit-config.yaml
+.python-version
 docker-compose.yml
-pyproject.toml
+Dockerfile
+LICENSE
+AGENTS.md
+README.md
