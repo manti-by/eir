@@ -76,4 +76,4 @@ jobs:
 
       - name: Run Pytest suite
         run: |
-          uv run pytest --disable-warnings tests/
+          uv run pytest tests/

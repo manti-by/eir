@@ -15,7 +15,7 @@ check:
 	uv run pre-commit run
 
 test:
-	uv run pytest -W ignore::DeprecationWarning tests/
+	uv run pytest tests/
 
 pip:
 	uv sync --all-extras --dev

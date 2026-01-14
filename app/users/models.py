@@ -63,7 +63,7 @@ class Message(SQLModel):
 # JSON payload containing access token
 class Token(SQLModel):
     access_token: str
-    token_type: str = "bearer"
+    token_type: str = "bearer"  # noqa
 
 
 # Contents of JWT token
